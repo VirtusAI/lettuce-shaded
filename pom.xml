@@ -4,13 +4,35 @@
 	<groupId>com.virtusai</groupId>
 	<artifactId>lettuce-shaded</artifactId>
 	<version>0.0.1</version>
+	
+	<properties>
+		<reactor-version>Bismuth-RELEASE</reactor-version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.projectreactor</groupId>
+				<artifactId>reactor-bom</artifactId>
+				<version>${reactor-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>io.lettuce</groupId>
-  			<artifactId>lettuce-core</artifactId>
+			<artifactId>lettuce-core</artifactId>
 			<version>5.0.0.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+		</dependency>
 	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -28,7 +50,6 @@
 								<excludes>
 									<exclude>io.netty:netty-tcnative</exclude>
 									<exclude>io.projectreactor:*</exclude>
-									<exclude>org.latencyutils:*</exclude>
 									<exclude>org.reactivestreams:*</exclude>
 								</excludes>
 							</artifactSet>
